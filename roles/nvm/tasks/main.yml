@@ -1,0 +1,4 @@
+---
+- name: Install nvm
+  shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/creationix/nvm/master/install.sh)"
+  when: nvm_status.stdout is not defined

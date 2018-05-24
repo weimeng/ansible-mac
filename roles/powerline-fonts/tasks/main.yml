@@ -1,0 +1,13 @@
+---
+- name: Install Homebrew-Cask
+  homebrew_tap:
+    name: caskroom/cask
+
+- name: Install Caskroom-Fonts
+  homebrew_tap:
+    name: caskroom/fonts
+
+- name: Install Hack font
+  homebrew_cask:
+    name: font-hack
+    state: upgraded

@@ -1,0 +1,23 @@
+---
+- name: Install PostgreSQL
+  homebrew:
+    name: postgresql
+
+- name: Install Ansible PostgreSQL dependencies
+  pip:
+    name: psycopg2
+
+- name: Start PostgreSQL service
+  command: /usr/local/bin/brew services start postgresql
+
+- name: Get local username
+  command: whoami
+  register: local_username
+
+- name: Set up default PostgreSQL database
+  postgresql_db:
+    login_user: "{{ local_username.stdout }}"
+    name: "{{ local_username.stdout }}"
+
+- name: Stop PostgreSQL service
+  command: /usr/local/bin/brew services stop postgresql
